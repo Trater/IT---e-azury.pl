@@ -16,7 +16,7 @@
 			this.timer = null;
 			
 			this.action();
-			this.stopStart();	
+		//	this.stopStart();	
 		},
 		_slideTo: function( slide ) {
 			var currentSlide = this.slides[slide];
