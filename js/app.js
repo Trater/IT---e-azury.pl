@@ -82,7 +82,7 @@ $(window).scroll(function() {
        console.log(scroll)
     if (scroll > 375) {
         //clearHeader, not clearheader - caps H
-        $('.navigationBar').addClass('sticky')
+        $('.navigationBar').addClass('sticky')		
     }else{
         $('.navigationBar').removeClass('sticky')
     }
