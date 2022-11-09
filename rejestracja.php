@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$errors = array('username_err'=>'', 'email_err'=>'');
+//$errors = array('username_err'=>'', 'email_err'=>'');
 
 $username = $_POST['signup-username'];
 $email = $_POST['signup-email'];
