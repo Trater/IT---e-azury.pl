@@ -37,7 +37,10 @@ if($result = @$polaczenie->query(
        
         header('Location: index.php');
     } else {
-        echo "Niepoprwane dane";
+        echo "<script>
+        alert('Niepoprawne dane. Spróbuj ponownie!');
+        window.location.href='index.php';
+        </script>";
     }
 }
 
