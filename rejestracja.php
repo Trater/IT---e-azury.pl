@@ -45,6 +45,7 @@ else
           $stmt->bind_param("sss", $username, $email, $password);
           $stmt->execute();
           $stmt->close();
+          header("Location: index.php");
          // echo 'You have successfully registered, you can now login!';
         } else {
           // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
