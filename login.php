@@ -41,6 +41,7 @@ if($result = @$polaczenie->query(
         alert('Niepoprawne dane. Spróbuj ponownie!');
         window.location.href='index.php';
         </script>";
+        exit();
     }
 }
 

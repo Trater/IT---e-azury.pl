@@ -14,6 +14,11 @@ $polaczenie = @new mysqli($host, $db_user,$db_password,$db_name);
 if($polaczenie->connect_errno!=0)
 {
     echo "Error: ".$polaczenie->connect_errno;
+    echo "<script>
+    alert('Error: '.$polaczenie->connect_errno);
+    window.location.href='index.php';
+    </script>";
+    exit();
 }
 else 
 {
@@ -31,6 +36,7 @@ else
        alert('Istnieje konto o takiej nazwie użytkownika. Wybierz inną nazwę!');
        window.location.href='index.php';
        </script>";
+       exit();
       
     }
     elseif ($stmt = $polaczenie->prepare('SELECT user_id FROM users WHERE user_email = ?'))
@@ -47,6 +53,7 @@ else
        alert('Istnieje konto zarejestrowane na ten adres email. Wybierz inny!');
        window.location.href='index.php';
        </script>";
+       exit();
       }
       else 
       {
@@ -62,7 +69,11 @@ else
          // echo 'You have successfully registered, you can now login!';
         } else {
           // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
-          echo 'Could not prepare statement!';
+          echo "<script>
+          alert('Nie można było przygotować zapytania SQL.');
+          window.location.href='index.php';
+          </script>";
+          exit();
         }
       }
     }
