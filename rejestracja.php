@@ -1,8 +1,11 @@
 <?php
 session_start();
-  $username = $_POST['signup-username'];
-  $email = $_POST['signup-email'];
-  $password = $_POST['signup-password'];
+
+$errors = array('username_err'=>'', 'email_err'=>'');
+
+$username = $_POST['signup-username'];
+$email = $_POST['signup-email'];
+$password = $_POST['signup-password'];
 
 require_once "connect.php";
 
@@ -23,7 +26,7 @@ else
     if ($stmt->num_rows > 0) 
     {
       // Username already exists
-      echo 'Username exists, please choose another!';
+      $errors['username_err'] =  'Username exists, please choose another!';
     }
     elseif ($stmt = $polaczenie->prepare('SELECT user_id FROM users WHERE user_email = ?'))
     {
@@ -34,7 +37,7 @@ else
       if ($stmt->num_rows > 0) 
       {
        // Username already exists
-       echo 'Email exists, please choose another!';
+       $errors['email_err'] = 'Email exists, please choose another!';
       }
       else 
       {
@@ -42,7 +45,7 @@ else
           $stmt->bind_param("sss", $username, $email, $password);
           $stmt->execute();
           $stmt->close();
-          echo 'You have successfully registered, you can now login!';
+         // echo 'You have successfully registered, you can now login!';
         } else {
           // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
           echo 'Could not prepare statement!';

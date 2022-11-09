@@ -47,7 +47,7 @@ echo<<<END
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Nazwa użytkownika</label>
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-username" id="signup-username" type="text" placeholder="Nazwa użytkownika">
-						<span class="cd-signin-modal__error">To pole powinno zawierać od 3 do 20 znaków!</span>			
+						<span class="cd-signin-modal__error">To pole powinno zawierać od 3 do 20 znaków!</span>		
 						
     
 
