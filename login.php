@@ -12,9 +12,9 @@ if($polaczenie->connect_errno!=0)
 else 
 {
     $email = $_POST['signin-email'];
-$password = $_POST['signin-password'];
-$email = htmlentities($email, ENT_QUOTES);
-$password = htmlentities($password, ENT_QUOTES);
+    $password = $_POST['signin-password'];
+    $email = htmlentities($email, ENT_QUOTES);
+    $password = htmlentities($password, ENT_QUOTES);
 
 
 
@@ -46,7 +46,4 @@ if($result = @$polaczenie->query(
 
 $polaczenie->close();
 }
-
-
-
 ?>
