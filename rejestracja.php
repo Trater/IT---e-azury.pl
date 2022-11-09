@@ -37,13 +37,15 @@ else
        echo 'Email exists, please choose another!';
       }
     }
-    else
-    {
-      $stmt = $polaczenie->prepare("insert into users(user_name, user_email, user_password) values(?, ?, ?)");
-      $stmt->bind_param("sss", $username, $email, $password);
-      $stmt->execute();
-      $stmt->close();
-    }
+      if ($stmt = $polaczenie->prepare("insert into users(user_name, user_email, user_password) values(?, ?, ?)")) {
+        $stmt->bind_param("sss", $username, $email, $password);
+        $stmt->execute();
+        $stmt->close();
+        echo 'You have successfully registered, you can now login!';
+      } else {
+        // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
+        echo 'Could not prepare statement!';
+      }
 
 $polaczenie->close();
   }
