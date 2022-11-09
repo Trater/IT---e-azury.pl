@@ -26,7 +26,12 @@ else
     if ($stmt->num_rows > 0) 
     {
       // Username already exists
-      $errors['username_err'] =  'Username exists, please choose another!';
+      //$errors['username_err'] =  'Username exists, please choose another!';
+      echo "<script>
+       alert('Username exists, please choose another!');
+       window.location.href='index.php';
+       </script>";
+      
     }
     elseif ($stmt = $polaczenie->prepare('SELECT user_id FROM users WHERE user_email = ?'))
     {
@@ -37,7 +42,11 @@ else
       if ($stmt->num_rows > 0) 
       {
        // Username already exists
-       $errors['email_err'] = 'Email exists, please choose another!';
+       //$errors['email_err'] = 'Email exists, please choose another!';
+       echo "<script>
+       alert('Email exists, please choose another!');
+       window.location.href='index.php';
+       </script>";
       }
       else 
       {
@@ -45,7 +54,11 @@ else
           $stmt->bind_param("sss", $username, $email, $password);
           $stmt->execute();
           $stmt->close();
-          header("Location: index.php");
+          echo "<script>
+          alert('You have successfully registered, you can now login!');
+          window.location.href='index.php';
+          </script>";
+          exit();
          // echo 'You have successfully registered, you can now login!';
         } else {
           // Something is wrong with the sql statement, check to make sure accounts table exists with all 3 fields.
