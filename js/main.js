@@ -45,15 +45,37 @@
 		} 
 
 		
-	/*	//IMPORTANT - REMOVE THIS - it's just to show/hide error messages in the demo
-		this.blocks[0].getElementsByTagName('form')[0].addEventListener('submit', function(event){
+	//IMPORTANT - REMOVE THIS - it's just to show/hide error messages in the demo
+		/*this.blocks[0].getElementsByTagName('form')[0].addEventListener('submit', function(event){
 			event.preventDefault();
-			self.toggleError(document.getElementById('signin-email'), true);
-		});
-		this.blocks[1].getElementsByTagName('form')[0].addEventListener('submit', function(event){
-			event.preventDefault();
-			self.toggleError(document.getElementById('signup-username'), true);
+			console.log("BŁAD");
+			
+			//self.toggleError(document.getElementById('signin-email'), true);
 		});*/
+		this.blocks[1].getElementsByTagName('form')[0].addEventListener('submit', function(event){
+			
+	var nameLength = document.getElementById("signup-username").value.length
+	
+	if((nameLength<3)||(nameLength)>20)
+	{	
+		event.preventDefault();
+		self.toggleError(document.getElementById('signup-username'), true);
+	}
+
+	if ( document.getElementById("check").checked == false){
+	console.log("terms");
+		event.preventDefault();		
+		document.getElementById("check2").classList.add("error");
+	}
+
+
+	if  (document.getElementById("signup-email").value == 0)
+	{
+		self.toggleError(document.getElementById('signup-email'), true);
+		event.preventDefault();
+		
+	}
+		});
 	};
 
 	ModalSignin.prototype.togglePassword = function(target) {
@@ -134,4 +156,109 @@
       		el.value = el.value;
     	}
 	};
+	
+	
 })();
+/*
+function ModalSignin( element ) {
+	this.element = element;
+	this.blocks = this.element.getElementsByClassName('js-signin-modal-block');
+	this.switchers = this.element.getElementsByClassName('js-signin-modal-switcher')[0].getElementsByTagName('a'); 
+	this.triggers = document.getElementsByClassName('js-signin-modal-trigger');
+	this.hidePassword = this.element.getElementsByClassName('js-hide-password');
+	this.init();
+}; 
+
+ModalSignin.prototype.toggleError = function(input, bool) {
+	// used to show error messages in the form
+	toggleClass(input, 'cd-signin-modal__input--has-error', bool);
+	toggleClass(input.nextElementSibling, 'cd-signin-modal__error--is-visible', bool);
+}
+
+
+function myModal(f)
+{
+    var nameValue = document.getElementById("signup-username").value;
+	var nameLength = document.getElementById("signup-username").value.length
+	console.log(nameLength);
+	var  erverythingGood = 1;
+	if((nameLength<3)||(nameLength)>20)
+	{				
+		console.log("ERROR");			
+	toggleClass(document.getElementById('signup-username'), 'cd-signin-modal__input--has-error', true);
+	toggleClass(document.getElementById('signup-username').nextElementSibling, 'cd-signin-modal__error--is-visible', true);
+} else {
+	toggleClass(document.getElementById('signup-username'), 'cd-signin-modal__input--has-error', false);
+	toggleClass(document.getElementById('signup-username').nextElementSibling, 'cd-signin-modal__error--is-visible', false);
+}
+
+
+
+
+*//*
+let mysql = require('mysql');
+
+var connection = mysql.createConnection({
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "it"
+  });
+  
+ 
+
+  var adr = document.getElementById("signup-email").value;
+  var sql = 'SELECT * FROM users WHERE user_email = ' + mysql.escape(adr);
+  connection.query(sql, function (err, result) {
+	if (err) throw err;
+	console.log(result);
+  });
+
+connection.end(); 
+	if 	(erverythingGood)
+	{
+
+	}
+		
+	
+	
+    return false;
+}
+
+//class manipulations - needed if classList is not supported
+function hasClass(el, className) {
+	if (el.classList) return el.classList.contains(className);
+	else return !!el.className.match(new RegExp('(\\s|^)' + className + '(\\s|$)'));
+}
+function addClass(el, className) {
+  var classList = className.split(' ');
+   if (el.classList) el.classList.add(classList[0]);
+   else if (!hasClass(el, classList[0])) el.className += " " + classList[0];
+   if (classList.length > 1) addClass(el, classList.slice(1).join(' '));
+}
+function removeClass(el, className) {
+  var classList = className.split(' ');
+	if (el.classList) el.classList.remove(classList[0]);	
+	else if(hasClass(el, classList[0])) {
+		var reg = new RegExp('(\\s|^)' + classList[0] + '(\\s|$)');
+		el.className=el.className.replace(reg, ' ');
+	}
+	if (classList.length > 1) removeClass(el, classList.slice(1).join(' '));
+}
+function toggleClass(el, className, bool) {
+  if(bool) addClass(el, className);
+  else removeClass(el, className);
+}
+
+//credits http://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
+function putCursorAtEnd(el) {
+  if (el.setSelectionRange) {
+		var len = el.value.length * 2;
+		el.focus();
+		el.setSelectionRange(len, len);
+  } else {
+		el.value = el.value;
+  }
+};
+
+*/

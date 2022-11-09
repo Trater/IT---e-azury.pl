@@ -1,9 +1,12 @@
+
+
 <!DOCTYPE html>
 
 <html>
-
 <?php
+
 echo<<<END
+
 <div class="cd-signin-modal js-signin-modal"> <!-- this is the entire modal form, including the background -->
 		<div class="cd-signin-modal__container"> <!-- this is the container wrapper -->
 			<ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger">
@@ -39,33 +42,37 @@ echo<<<END
 				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="reset">Zaspomniałeś hasła?</a></p>
 			</div> <!-- cd-signin-modal__block -->
 
-			<div class="cd-signin-modal__block js-signin-modal-block" data-type="signup"> <!-- sign up form -->
-				<form class="cd-signin-modal__form">
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="signup" > <!-- sign up form -->
+				<form class="cd-signin-modal__form" action="rejestracja.php" method="post">
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Nazwa użytkownika</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Nazwa użytkownika">
-						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-username" id="signup-username" type="text" placeholder="Nazwa użytkownika">
+						<span class="cd-signin-modal__error">To pole powinno zawierać od 3 do 20 znaków!</span>			
+						
+    
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-email" id="signup-email" type="email" placeholder="E-mail">
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Hasło</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Hasło">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-password" type="text"  placeholder="Hasło">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Ukryj</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
+
+					
+					</p>
+					
+					<p class="cd-signin-modal__fieldset" id="check2">
+						<input type="checkbox" id="check" name="accept-terms" class="cd-signin-modal__input">
+						<label for="accept-terms"> I agree to the  <a href="#0">Terms</a></label>
 					</p>
 
-					<p class="cd-signin-modal__fieldset">
-						<input type="checkbox" id="accept-terms" class="cd-signin-modal__input ">
-						<label for="accept-terms">I agree to the <a href="#0">Terms</a></label>
-					</p>
-
-					<p class="cd-signin-modal__fieldset">
+					
+					
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Stwórz konto">
 					</p>
 				</form>

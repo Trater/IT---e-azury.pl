@@ -32,6 +32,10 @@ input, textarea {
   font-family: 'Quicksand-Bold';
 }
 
+.error {
+  color: red;
+}
+
 h2 {
     margin-top: 0;
     margin-bottom: 0;
@@ -580,6 +584,7 @@ li img {
   .cd-signin-modal__fieldset {
     position: relative;
     margin: 1.4em 0;
+  
   }
   
   .cd-signin-modal__fieldset:first-child {

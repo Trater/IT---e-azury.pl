@@ -13,10 +13,15 @@ else
 {
     $email = $_POST['signin-email'];
 $password = $_POST['signin-password'];
+$email = htmlentities($email, ENT_QUOTES);
+$password = htmlentities($password, ENT_QUOTES);
 
-$sql = "SELECT * FROM users WHERE user_email = '$email' AND user_password = '$password'";
 
-if($result = @$polaczenie->query($sql))
+
+if($result = @$polaczenie->query(
+    sprintf("SELECT * FROM users WHERE user_email = '%s' AND user_password = '%s'",
+    mysqli_real_escape_string($polaczenie,$email),
+    mysqli_real_escape_string($polaczenie,$password))))
 {
     $number_of_users = $result->num_rows;
     if($number_of_users>0)

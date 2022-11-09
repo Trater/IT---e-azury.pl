@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 
 <html>
+<?php
+session_start();
 
+if(!isset($_SESSION['zalogowany']))
+{
+    header('Location: index.php');
+    exit();
+}
+?> 
 <head>
     <title>DECORUM</title>
     
 	<link rel="stylesheet" href="css/style.css"> 
 	<link rel="stylesheet" href="css/demo.css"> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
