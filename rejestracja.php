@@ -28,7 +28,7 @@ else
       // Username already exists
       //$errors['username_err'] =  'Username exists, please choose another!';
       echo "<script>
-       alert('Username exists, please choose another!');
+       alert('Istnieje konto o takiej nazwie użytkownika. Wybierz inną nazwę!');
        window.location.href='index.php';
        </script>";
       
@@ -44,7 +44,7 @@ else
        // Username already exists
        //$errors['email_err'] = 'Email exists, please choose another!';
        echo "<script>
-       alert('Email exists, please choose another!');
+       alert('Istnieje konto zarejestrowane na ten adres email. Wybierz inny!');
        window.location.href='index.php';
        </script>";
       }
@@ -55,7 +55,7 @@ else
           $stmt->execute();
           $stmt->close();
           echo "<script>
-          alert('You have successfully registered, you can now login!');
+          alert('Zarejestrowano poprawnie, możesz się zalogować!');
           window.location.href='index.php';
           </script>";
           exit();
