@@ -13,36 +13,35 @@
 <body>
     <div class="container">
     <header>
-            <?php
-                require_once "header.php";
-            ?>
-        </header>
-        <main>
-            <?php
-                require_once "navBar.php";
-            ?>
-                <section>
-                    <div class="linie" style="padding-top:100px">                        
-                        <h2>Wzory wielkanocne</h2>
-                        <img src="liniab.png" width="750px" height="7px">
-                    </div>
-                    <ul class="types">
-                        <li>
-                            
-                         </li>                             
-                    </ul>
-                </section>  
-                         
-            </main>
-           
-        </div>
         <?php
-            require_once "logowanie.php";
-    ?>
-        <script src="js/app.js"></script>
-        <script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
-        <script src="js/main.js"></script> <!-- Resource JavaScript -->
-    
+            require_once "header.php";
+        ?>
+    </header>
+    <main>
+        <?php
+            require_once "navBar.php";
+        ?>
+        <section>
+            <div class="linie" style="padding-top:100px">                        
+                <h2>Wzory wielkanocne</h2>
+                <img src="liniab.png" width="750px" height="7px">
+            </div>
+            <ul class="types">
+            <?php
+                $_SESSION['kategoria'] = "wi";
+                require_once "displayimages.php";
+            ?>                         
+            </ul>
+        </section>              
+    </main>
         
+    </div>
+    <?php
+        require_once "logowanie.php";
+    ?>
+    <script src="js/app.js"></script>
+    <script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
+    <script src="js/main.js"></script> <!-- Resource JavaScript -->
+    
     </body>
 </html>

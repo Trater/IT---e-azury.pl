@@ -27,15 +27,10 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                        <li>
-                           <img src="zawieszki/H1.png" alt=""><h3>H1.</h3>                                      
-                        </li>
-                        <li>
-                            <img src="zawieszki/H2.png" alt=""><h3>H2.</h3>   
-                        </li>
-                        <li>
-                            <img src="zawieszki/H3.png" alt=""><h3>H3.</h3>   
-                        </li>                                             
+                    <?php
+                            $_SESSION['kategoria'] = "z";
+                            require_once "displayimages.php";
+                        ?>                                           
                     </ul>
                 </section>              
             </main>

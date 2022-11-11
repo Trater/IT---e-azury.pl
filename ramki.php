@@ -27,21 +27,10 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                        <li>
-                           <img src="ramki/w10.png" alt=""><h3>W10. Sztylety</h3>                                      
-                        </li>
-                        <li>
-                            <img src="ramki/w11.png" alt=""><h3>W11. Geometryczny</h3>   
-                        </li>
-                        <li>
-                            <img src="ramki/w12.png" alt=""><h3>W12. Pajęczyna</h3>   
-                        </li> 
-                        <li>
-                            <img src="ramki/w13.png" alt=""><h3>W13. Maroko</h3>   
-                        </li>
-                        <li>
-                            <img src="ramki/w14.png" alt=""><h3>W14. Fantazy</h3>   
-                        </li>                           
+                    <?php
+                            $_SESSION['kategoria'] = "r";
+                            require_once "displayimages.php";
+                        ?>                     
                     </ul>
                 </section>              
             </main>

@@ -27,21 +27,13 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="pionowe">
-                        <li>
-                           <img src="pionowe/L1.png" alt=""><h3>L1. Viktorian</h3>                                      
-                        </li>
-                        <li>
-                            <img src="pionowe/L2.png" alt=""><h3>L2. Kwadraty</h3>   
-                        </li>
-                        <li>
-                            <img src="pionowe/L3.png" alt=""><h3>L3. Kamienie</h3>   
-                        </li>   
-                        <li>
-                            <img src="pionowe/L4.png" alt=""><h3>L4. Plecionka</h3>   
-                        </li>                                              
+                        <?php
+                            $_SESSION['kategoria'] = "pi";
+                            require_once "displayimages.php";
+                        ?> 
                     </ul>
                 </section>              
-            </main>
+            </main> 
            
         </div>
         <?php

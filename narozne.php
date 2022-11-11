@@ -27,15 +27,10 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                        <li>
-                           <img src="narozne/r7.png" alt=""><h3>R7. Sztylety</h3>                                      
-                        </li>
-                        <li>
-                            <img src="narozne/r8.png" alt=""><h3>R8. Geometryczny</h3>   
-                        </li>
-                        <li>
-                            <img src="narozne/r9.png" alt=""><h3>R9. Pajęczyna</h3>   
-                        </li>                                                 
+                    <?php
+                            $_SESSION['kategoria'] = "n";
+                            require_once "displayimages.php";
+                        ?>                                               
                     </ul>
                 </section>              
             </main>

@@ -15,14 +15,12 @@ if($polaczenie->connect_errno!=0)
     echo "Error: ".$polaczenie->connect_errno;
     echo "<script>
     alert('Error: '.$polaczenie->connect_errno);
-    window.location.href='index.php';
+    window.location.href='uploadform.php';
     </script>";
     exit();
 }
 else 
 {
-  $statusMsg = '';
-
   // File upload path
   $targetDir = "uploaded_images/";
   $fileName = basename($_FILES["file"]["name"]);
