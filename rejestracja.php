@@ -6,6 +6,7 @@ session_start();
 $username = $_POST['signup-username'];
 $email = $_POST['signup-email'];
 $password = $_POST['signup-password'];
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 require_once "connect.php";
 
@@ -58,7 +59,7 @@ else
       else 
       {
         if ($stmt = $polaczenie->prepare("insert into users(user_name, user_email, user_password) values(?, ?, ?)")) {
-          $stmt->bind_param("sss", $username, $email, $password);
+          $stmt->bind_param("sss", $username, $email, $hashed_password);
           $stmt->execute();
           $stmt->close();
           echo "<script>

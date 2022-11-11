@@ -27,21 +27,10 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                        <li>
-                           <img src="poziome/poz.png" alt=""><h3>1. Viktorian</h3>                                      
-                        </li>
-                        <li>
-                            <img src="poziome/diana.png" alt=""><h3>2. Diana</h3>   
-                        </li>
-                        <li>
-                            <img src="poziome/ombre.png" alt=""><h3>3. Ombre</h3>   
-                        </li> 
-                        <li>
-                            <img src="poziome/aztekan.png" alt=""><h3>4. Aztekan</h3>   
-                        </li>
-                        <li>
-                            <img src="poziome/rodo.png" alt=""><h3>5. Rodo</h3>   
-                        </li>   
+                    <?php
+                            $_SESSION['kategoria'] = "po";
+                            require_once "displayimages.php";
+                        ?> 
                     </ul>
                 </section>              
             </main>

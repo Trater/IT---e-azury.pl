@@ -27,9 +27,10 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                        <li>
-                            <img src="poziome/chris.png" alt=""><h3>50. Renifery</h3>                                      
-                         </li>                             
+                    <?php
+                            $_SESSION['kategoria'] = "b";
+                            require_once "displayimages.php";
+                        ?>                              
                     </ul>
                 </section>  
                          
