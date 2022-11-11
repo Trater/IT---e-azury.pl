@@ -19,5 +19,7 @@
       <option value="j">Jesień</option>
     </select>
 
+    <input name="title" placeholder="Tytuł wzoru">
+
     <input type="submit" name="submit" value="Upload">
 </form>

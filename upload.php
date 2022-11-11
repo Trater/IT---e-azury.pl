@@ -5,7 +5,7 @@ $file_category=$_POST['category'];
 $file_subcategory=$_POST['subcategory'];
 if($file_subcategory ==='')
     $file_subcategory=null;
-
+$file_title = $_POST['title'];
 require_once "connect.php";
 
 $polaczenie = @new mysqli($host, $db_user,$db_password,$db_name);
@@ -54,9 +54,9 @@ else
                 {
                     // Insert image file name into database
                     //$insert = $db->query("INSERT into images (img_name, img_category, img_subcategory) VALUES ('".$fileName."', $file_category)");
-                    if($stmt = $polaczenie->prepare("insert into images(img_name, img_category, img_subcategory) values(?, ?, ?)"))
+                    if($stmt = $polaczenie->prepare("insert into images(img_filename, img_category, img_subcategory, img_title) values(?, ?, ?, ?)"))
                     {
-                      $stmt->bind_param("sss", $fileName, $file_category, $file_subcategory);
+                      $stmt->bind_param("ssss", $fileName, $file_category, $file_subcategory, $file_title);
                       $stmt->execute();
                       $stmt->close();
                       echo "<script>
