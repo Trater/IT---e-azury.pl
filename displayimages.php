@@ -8,6 +8,8 @@ if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_subcategory = "%s"', $kategoria);
 elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategoria === 'r' | $kategoria === 'w' | $kategoria === 'z')
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_category = "%s"', $kategoria);
+  elseif($kategoria == 'fav')
+  $zapytanie = sprintf('select img_filename, img_title, img_id from images JOIN favourite ON img_id= images_img_id where users_user_id = "%s"', $_SESSION['user_id']);
 
 
 
