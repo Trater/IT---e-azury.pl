@@ -32,8 +32,7 @@ else
             $number_of_users = $result->num_rows;
             if($number_of_users>0)
             {
-                $_SESSION['zalogowany'] = true;
-                $column = $result->fetch_assoc();
+                $_SESSION['zalogowany'] = true;                
                 $_SESSION['user_id'] = $column['user_id'];
                 $_SESSION['user_name'] = $column['user_name'];
                 $_SESSION['user_email'] = $column['user_email'];

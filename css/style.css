@@ -74,7 +74,7 @@ span {
     width: 1080px;
     margin: 0 auto 0 auto;
     background-color: white;
-    z-index: 2;
+    z-index: 3;
 }
 
 .navigationBar img {
@@ -235,6 +235,23 @@ header li {
     border-radius: 30%;
 }
 
+.follow-icon {
+  pointer-events: all;
+  width: 50px;
+  height: 50px;
+  position: absolute;  
+  display: none;
+  right:20px;
+  top: 20px;
+/*
+  background-color: white;
+  border-radius: 30%; 
+  box-shadow: 0 0 15px 1px lightgray;
+ */
+}
+
+
+
 .occasions {
     width: 45px;
     height: 50px;
@@ -242,23 +259,25 @@ header li {
 }
 
 .types {
+  
     list-style: none;
     font-size: 20px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
+    
     padding-left: 0;
 
 }
 
 .types li {
+  
     width: 33%;
     padding-top: 10px;
     transition: opacity 0.5s;
     transition: box-shadow 0.5s;
     border-radius: 20px;
-
+    position:relative;  
     align-items: center;
     text-align: center;
     margin-left: auto;
@@ -282,13 +301,21 @@ header li {
 }
 
 .types li a {
+
     color: inherit;
     /* blue colors for links too */
     text-decoration: inherit;
+    
 }
 
 .types li:hover {
     box-shadow: 0 0 15px 1px lightgray;
+}
+
+.types li:hover a .follow-icon{
+ display:  inline; 
+
+
 }
 
 .oc {

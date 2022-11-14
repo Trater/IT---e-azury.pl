@@ -1,5 +1,8 @@
 
 	
+	
+	
+	
 	function Slideshow( element ) {
 		this.el = document.querySelector( element );
 		this.init();
@@ -66,6 +69,8 @@
 	
 
 
+
+
 $(window).scroll(function(){
     if($(this).scrollTop() > 358){
         $('.navigationBar').addClass('sticky')
@@ -75,6 +80,38 @@ $(window).scroll(function(){
 		document.getElementById("placeHolder").style.display = "none";
     }
 });
+
+
+
+
+
+function changeFollow(x) {
+	var id = x.id;
+	if(x.src=="http://localhost/GIT/icons/followed.png"){
+	x.src="icons/unfollowed.png";
+
+	$.ajax({
+		url: "fav_del.php",
+		type: "POST",
+		data: {
+			img_id: id			
+		},
+	});
+	
+	
+	} else {
+	x.src="icons/followed.png";	
+	
+	$.ajax({
+		url: "fav_add.php",
+		type: "POST",
+		data: {
+			img_id: id			
+		},
+	});
+}
+  }
+
 
 /*
 $(window).scroll(function() {    

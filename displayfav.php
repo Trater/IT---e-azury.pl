@@ -1,13 +1,11 @@
 <?php
 
 require_once "connect.php";
-$kategoria = $_SESSION['kategoria'];
 
 
-if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
-  $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_subcategory = "%s"', $kategoria);
-elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategoria === 'r' | $kategoria === 'w' | $kategoria === 'z')
-  $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_category = "%s"', $kategoria);
+
+$zapytanie = sprintf('select img_filename, img_title, img_id from images JOIN favourite ON img_id= images_img_id where users_user_id = "%s"', $_SESSION['user_id']);
+
 
 
 
@@ -31,6 +29,9 @@ else
     {
       while($row=$query->fetch_assoc())
       {        
+
+        
+
         $img_URL ='uploaded_images/'.$row["img_filename"];        
         $img_title = $row["img_title"];
         $img_id = $row["img_id"];

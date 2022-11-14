@@ -4,6 +4,9 @@
 <?php
 session_start();
 
+
+                            
+
 if(!isset($_SESSION['zalogowany']))
 {
     header('Location: index.php');
@@ -37,7 +40,9 @@ if(!isset($_SESSION['zalogowany']))
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                                                             
+                        <?php
+                         require_once "displayfav.php";   
+                        ?>                     
                     </ul>
                 </section>              
             </main>

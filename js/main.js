@@ -22,6 +22,7 @@
 				});
 			})(i);
 		}
+		
 
 		//close modal
 		this.element.addEventListener('click', function(event){
@@ -55,19 +56,25 @@
 		this.blocks[1].getElementsByTagName('form')[0].addEventListener('submit', function(event){
 			
 	var nameLength = document.getElementById("signup-username").value.length
+
+	//var mysql      = require('mysql');
+
 	
 	if((nameLength<3)||(nameLength)>20)
 	{	
 		event.preventDefault();
 		self.toggleError(document.getElementById('signup-username'), true);
 	}
+	else
+	self.toggleError(document.getElementById('signup-username'), false);
+
 
 	if ( document.getElementById("check").checked == false){
 	console.log("terms");
 		event.preventDefault();		
 		document.getElementById("check2").classList.add("error");
 	}
-
+	
 
 	if  (document.getElementById("signup-email").value == 0)
 	{
@@ -75,6 +82,21 @@
 		event.preventDefault();
 		
 	}
+	else
+	self.toggleError(document.getElementById('signup-email'), false);
+
+	console.log(document.getElementById("signup-password").value.length);
+
+	if  (document.getElementById("signup-password").value.length == 0 )
+	{
+		self.toggleError(document.getElementById('signup-password'), true);
+		event.preventDefault();		
+	}
+	else
+	self.toggleError(document.getElementById('signup-password'), false);
+
+
+
 		});
 	};
 

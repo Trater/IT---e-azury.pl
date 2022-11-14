@@ -17,6 +17,7 @@
         <header>
             <?php
                 include_once "header.php";
+                
             ?>
         </header>
         <main>
@@ -43,7 +44,7 @@
                 <ul class="types">
                     <li>
                         <a href="poziome.php">
-                            <h3>Poziome</h3><img src="poziome/poz.png" alt="">
+                            <h3>Poziome</h3><img src="poziome/poz.png" alt="">                           
                         </a>
                     </li>
                     <li>

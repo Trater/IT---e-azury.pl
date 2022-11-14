@@ -39,7 +39,7 @@ echo<<<END
 					</p>
 				</form>
 				
-				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="reset">Zaspomniałeś hasła?</a></p>
+				<!--<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="reset">Zaspomniałeś hasła?</a></p>-->
 			</div> <!-- cd-signin-modal__block -->
 
 			<div class="cd-signin-modal__block js-signin-modal-block" data-type="signup" > <!-- sign up form -->
@@ -47,20 +47,20 @@ echo<<<END
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Nazwa użytkownika</label>
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-username" id="signup-username" type="text" placeholder="Nazwa użytkownika">
-						<span class="cd-signin-modal__error">To pole powinno zawierać od 3 do 20 znaków!</span>		
+						<span class="cd-signin-modal__error">To pole powinno zawierać od 3 do 20 znaków!</span>			
 						
     
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-email" id="signup-email" type="email" placeholder="E-mail">
-						<span class="cd-signin-modal__error">Error message here!</span>
+						<span class="cd-signin-modal__error">To pole nie może być puste!</span>
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Hasło</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-password" type="text"  placeholder="Hasło">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Ukryj</a>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" name="signup-password" id="signup-password"  type="password"  placeholder="Hasło">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Pokaż</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
 
 					
@@ -68,7 +68,7 @@ echo<<<END
 					
 					<p class="cd-signin-modal__fieldset" id="check2">
 						<input type="checkbox" id="check" name="accept-terms" class="cd-signin-modal__input">
-						<label for="accept-terms"> I agree to the  <a href="#0">Terms</a></label>
+						<label for="accept-terms">Akceptuje  <a href="#0">Regulamin</a></label>
 					</p>
 
 					
@@ -76,6 +76,7 @@ echo<<<END
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Stwórz konto">
 					</p>
 				</form>
+				
 			</div> <!-- cd-signin-modal__block -->
 
 			<div class="cd-signin-modal__block js-signin-modal-block" data-type="reset"> <!-- reset password form -->
@@ -91,6 +92,7 @@ echo<<<END
 					<p class="cd-signin-modal__fieldset">
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Reset password">
 					</p>
+					
 				</form>
 
 				<p class="cd-signin-modal__bottom-message js-signin-modal-trigger"><a href="#0" data-signin="login">Back to log-in</a></p>
