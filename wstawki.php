@@ -27,24 +27,10 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                        <li>
-                           <img src="wstawki/w1.png" alt=""><h3>W1. Viktorian</h3>                                      
-                        </li>
-                        <li>
-                            <img src="wstawki/w2.png" alt=""><h3>W2. Barok</h3>   
-                        </li>
-                        <li>
-                            <img src="wstawki/w3.png" alt=""><h3>W3. Pierścienie</h3>   
-                        </li> 
-                        <li>
-                            <img src="wstawki/w4.png" alt=""><h3>W4. Nuvo</h3>   
-                        </li>
-                        <li>
-                            <img src="wstawki/w5.png" alt=""><h3>W5. Koła</h3>   
-                        </li>   
-                        <li>
-                            <img src="wstawki/w6.png" alt=""><h3>W5. Kwadraty</h3>   
-                        </li>  
+                    <?php
+                            $_SESSION['kategoria'] = "w";
+                            require_once "displayimages.php";
+                        ?>      
                     </ul>
                 </section>              
             </main>
