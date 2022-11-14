@@ -41,7 +41,8 @@ if(!isset($_SESSION['zalogowany']))
                     </div>
                     <ul class="types">
                         <?php
-                         require_once "displayfav.php";   
+                         $_SESSION['kategoria'] = "fav";
+                         require_once "displayimages.php";   
                         ?>                     
                     </ul>
                 </section>              
