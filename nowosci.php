@@ -28,7 +28,10 @@
                         <img src="liniab.png" width="750px" height="7px">
                     </div>
                     <ul class="types">
-                                                             
+                        <?php
+                            $_SESSION['kategoria'] = "new";
+                            require_once "displayimages.php";
+                        ?>                                   
                     </ul>
                 </section>              
             </main>

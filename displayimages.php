@@ -3,16 +3,16 @@
 require_once "connect.php";
 $kategoria = $_SESSION['kategoria'];
 
+$new_img = -4;//ile dni wstecz maja byc pokazywane zdjecia w tabeli nowe, teraz 4 dni wstecz
 
 if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_subcategory = "%s"', $kategoria);
 elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategoria === 'r' | $kategoria === 'w' | $kategoria === 'z')
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_category = "%s"', $kategoria);
-  elseif($kategoria == 'fav')
+elseif($kategoria == 'fav')
   $zapytanie = sprintf('select img_filename, img_title, img_id from images JOIN favourite ON img_id= images_img_id where users_user_id = "%s"', $_SESSION['user_id']);
-
-
-
+elseif($kategoria == 'new')
+  $zapytanie = sprintf('select img_filename, img_title, img_id, img_uploaded from images where img_uploaded BETWEEN DATE_ADD(CURDATE(), INTERVAL "%d" DAY) AND CURDATE() ORDER BY img_uploaded DESC', $new_img);
 
 $polaczenie = @new mysqli($host, $db_user,$db_password,$db_name);
 // Include the database configuration file
