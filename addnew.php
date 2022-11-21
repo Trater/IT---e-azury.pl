@@ -42,7 +42,22 @@ if((!isset($_SESSION['zalogowany'])) || ($_SESSION['user_role'] != 1))
                     <form style="padding-top:20px ;" action="upload.php" method="post" enctype="multipart/form-data">
                       <p>Wybierz plik ze wzorem: <input type="file" name="file"></p> 
                       <p>Wybierz kategorię: 
-                        <select name="category">
+                        <select 
+                            style=
+                              "background-color: rgb(214, 234, 240);
+                              border-radius: 5px;
+                              color: gray;
+                              font-size: 12px;
+                              width: 200px;
+                              height: 20px;
+                              margin: 0 0 0 0;
+                              padding-left: 6px;
+                              padding-top: 2px;
+                              border-width: 1px;
+                              border-color: rgb(76, 149, 168);
+                              border: none;
+                              box-shadow: 1px 1px 3px 1px rgb(73, 119, 128);" 
+                            name="category">
                           <option value=NULL selected></option>
                           <option value="po">Poziome</option>
                           <option value="pi">Pionowe</option>
@@ -53,7 +68,22 @@ if((!isset($_SESSION['zalogowany'])) || ($_SESSION['user_role'] != 1))
                         </select>
                       </p>
                       <p> Wybierz podkategorię: 
-                        <select name="subcategory">
+                        <select 
+                        style=
+                          "background-color: rgb(214, 234, 240);
+                          border-radius: 5px;
+                          color: gray;
+                          font-size: 12px;
+                          width: 200px;
+                          height: 20px;
+                          margin: 0 0 0 0;
+                          padding-left: 6px;
+                          padding-top: 2px;
+                          border-width: 1px;
+                          border-color: rgb(76, 149, 168);
+                          border: none;
+                          box-shadow: 1px 1px 3px 1px rgb(73, 119, 128);" 
+                        name="subcategory">
                           <option value="" selected>Brak</option>
                           <option value="b">Boże narodzenie</option>
                           <option value="wi">Wielkanoc</option>
@@ -61,11 +91,26 @@ if((!isset($_SESSION['zalogowany'])) || ($_SESSION['user_role'] != 1))
                         </select>
                       </p>
                       <p> Wybierz tytuł: 
-                        <input name="title" placeholder="Tytuł wzoru">
+                        <input 
+                        style=
+                          "background-color: rgb(214, 234, 240);
+                          border-radius: 5px;
+                          color: gray;
+                          font-size: 12px;
+                          width: 200px;
+                          height: 20px;
+                          margin: 0 0 0 0;
+                          padding-left: 6px;
+                          padding-top: 2px;
+                          border-width: 1px;
+                          border-color: rgb(76, 149, 168);
+                          border: none;
+                          box-shadow: 1px 1px 3px 1px rgb(73, 119, 128);" 
+                        name="title" placeholder="Tytuł wzoru">
                       </p>
                       <p>
-                        <input style="
-                         margin: 0;
+                        <input style=
+                        "margin: 0;
                         padding: 0;
                         border-radius: 0.25em;
                         text-decoration: none;
@@ -80,8 +125,7 @@ if((!isset($_SESSION['zalogowany'])) || ($_SESSION['user_role'] != 1))
                                   appearance: none;
                           -webkit-font-smoothing: antialiased;
                           -moz-osx-font-smoothing: grayscale;
-                          width: 20%;
-                        " 
+                          width: 20%;" 
                         
                         type="submit" name="submit" value="Dodaj">
                       </p>
