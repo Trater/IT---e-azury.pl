@@ -13,18 +13,21 @@
 </head>
 
 <body>
+    <?php
+    include_once "addnew.php"
+    ?>
+
     <div class="container">
         <header>
+            
             <?php
                 include_once "header.php";
-                
             ?>
         </header>
         <main>
             <?php
                 include_once "navBar.php";            
             ?>
-
             <section style="padding: 0">
                 <div class="slider" id="main-slider">
                     <!-- outermost container element -->
