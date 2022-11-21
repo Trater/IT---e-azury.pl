@@ -35,6 +35,32 @@ input, textarea {
 .error {
   color: red;
 }
+.dodaj_wzor{
+  margin: 0;
+  padding: 0;
+  border-radius: 0.25em;
+  text-decoration: none;
+}
+.dodaj_wzor[type=submit]{
+  
+  padding: 16px 0;
+    cursor: pointer;
+    background: #2f889a;
+    color: #FFF;
+    font-weight: bold;
+    border: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+}
+
+.dodaj_wzor[type=submit]:hover, .dodaj_wzor[type=submit]:focus {
+  background: #3599ae;
+  outline: none;
+}
 
 h2 {
     margin-top: 0;
@@ -791,6 +817,9 @@ li img {
     }
     .cd-signin-modal__input[type=submit] {
       padding: 16px 0;      
+    }
+    .dodaj_wzor[type=submit]{
+      padding: 16px 0;   
     }
   }
   

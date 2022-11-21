@@ -14,7 +14,7 @@
 
 <body>
     <?php
-    include_once "addnew.php"
+    include_once "addnewIcon.php"
     ?>
 
     <div class="container">

@@ -1,26 +1,103 @@
 <!DOCTYPE html>
 
 <html>
-
 <?php
-if(session_status()!=2){
-  session_start();
-  }
+session_start();
 
-if((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true) && ($_SESSION['user_role'] == 1))
+
+                            
+
+if((!isset($_SESSION['zalogowany'])) || ($_SESSION['user_role'] != 1))
 {
-  echo<<<END
-  <div 
-  style=
-  "display: inline-block;
-  position: fixed;
-  top:600px">   
-  <a href="">
-  <img src="icons/AddNew96.png" alt="">
-  </a>
-  </div>
-  END;
+    header('Location: index.php');
+    exit();
 }
-?>
+?> 
 
+<head>
+    <title>DECORUM</title>
+    
+	<link rel="stylesheet" href="css/style.css"> 
+	<link rel="stylesheet" href="css/demo.css"> 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container">    
+
+        <header>
+            <?php
+                require_once "header.php";
+            ?>
+        </header>
+        <main>
+            <?php
+                require_once "navBar.php";
+            ?>
+                <section>
+                    <div class="linie" style="padding-top:100px">                        
+                        <h2>DODAJ NOWY WZÓR</h2>
+                        <img src="liniab.png" width="750px" height="7px">
+                    </div>
+                    <form style="padding-top:20px ;" action="upload.php" method="post" enctype="multipart/form-data">
+                      <p>Wybierz plik ze wzorem: <input type="file" name="file"></p> 
+                      <p>Wybierz kategorię: 
+                        <select name="category">
+                          <option value=NULL selected></option>
+                          <option value="po">Poziome</option>
+                          <option value="pi">Pionowe</option>
+                          <option value="w">Wstawki</option>
+                          <option value="r">Ramki</option>
+                          <option value="n">Narożne</option>
+                          <option value="z">Zawieszki</option>
+                        </select>
+                      </p>
+                      <p> Wybierz podkategorię: 
+                        <select name="subcategory">
+                          <option value="" selected>Brak</option>
+                          <option value="b">Boże narodzenie</option>
+                          <option value="wi">Wielkanoc</option>
+                          <option value="j">Jesień</option>
+                        </select>
+                      </p>
+                      <p> Wybierz tytuł: 
+                        <input name="title" placeholder="Tytuł wzoru">
+                      </p>
+                      <p>
+                        <input style="
+                         margin: 0;
+                        padding: 0;
+                        border-radius: 0.25em;
+                        text-decoration: none;
+                         padding: 16px 0;
+                          cursor: pointer;
+                          background: #2f889a;
+                          color: #FFF;
+                          font-weight: bold;
+                          border: none;
+                          -webkit-appearance: none;
+                              -moz-appearance: none;
+                                  appearance: none;
+                          -webkit-font-smoothing: antialiased;
+                          -moz-osx-font-smoothing: grayscale;
+                          width: 20%;
+                        " 
+                        
+                        type="submit" name="submit" value="Dodaj">
+                      </p>
+                    </form>
+                </section>              
+            </main>
+           
+        </div>
+        
+    <?php
+            require_once "logowanie.php";
+    ?>
+        <script src="js/app.js"></script>
+        <script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
+        <script src="js/main.js"></script> <!-- Resource JavaScript -->
+    
+        
+    </body>
 </html>
