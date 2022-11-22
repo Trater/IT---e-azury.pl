@@ -15,7 +15,7 @@ if($polaczenie->connect_errno!=0)
     echo "Error: ".$polaczenie->connect_errno;
     echo "<script>
     alert('Error: '.$polaczenie->connect_errno);
-    window.location.href='addnew.php';
+    window.location.href='uploadform.php';
     </script>";
     exit();
 }
@@ -44,7 +44,7 @@ else
             {
                 echo "<script>
                 alert('Istnieje obraz o takiej nazwie. Wybierz inną nazwę!');
-                window.location.href='addnew.php';
+                window.location.href='uploadform.php';
                 </script>";
                 exit();
             }
@@ -61,7 +61,7 @@ else
                       $stmt->close();
                       echo "<script>
                       alert('Plik ".$fileName. " został dodany poprawnie.');
-                      window.location.href='addnew.php';
+                      window.location.href='uploadform.php';
                       </script>";
                       exit();
                     }
@@ -69,7 +69,7 @@ else
                     {
                       echo "<script>
                       alert('Plik ".$fileName. " nie został dodany poprawnie.');
-                      window.location.href='addnew.php';
+                      window.location.href='uploadform.php';
                       </script>";
                       exit();
                     }
@@ -78,7 +78,7 @@ else
                 {
                     echo "<script>
                     alert('Wystąpił problem z przeniesieniem twojego pliku na serwer');
-                    window.location.href='addnew.php';
+                    window.location.href='uploadform.php';
                     </script>";
                 }
             }
@@ -89,7 +89,7 @@ else
       {
         echo "<script>
         alert('Mogą być tylko rozszerzenie .png, .jpg, .jpeg');
-        window.location.href='addnew.php';
+        window.location.href='uploadform.php';
         </script>";
       }
   }
@@ -97,7 +97,7 @@ else
   {
     echo "<script>
     alert('Wybierz plik oraz kategorie.');
-    window.location.href='addnew.php';
+    window.location.href='uploadform.php';
     </script>";
   }
 }

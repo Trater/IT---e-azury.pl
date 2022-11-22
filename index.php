@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
+
     <title>DECORUM</title>
     
 	<link rel="stylesheet" href="css/style.css"> 
@@ -13,21 +13,18 @@
 </head>
 
 <body>
-    <?php
-    include_once "addnewIcon.php"
-    ?>
-
     <div class="container">
-        <header>
-            
+        <header class="logo">
             <?php
                 include_once "header.php";
+                
             ?>
         </header>
         <main>
             <?php
                 include_once "navBar.php";            
             ?>
+
             <section style="padding: 0">
                 <div class="slider" id="main-slider">
                     <!-- outermost container element -->

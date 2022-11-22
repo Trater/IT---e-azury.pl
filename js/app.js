@@ -87,17 +87,16 @@ $(window).scroll(function(){
 
 function changeFollow(x) {
 	var id = x.id;
-	if(x.src=="http://localhost/GIT/icons/followed.png"){
+	if(x.src.includes('/followed.png')){
 	x.src="icons/unfollowed.png";
-
+	console.log("LOG");
 	$.ajax({
 		url: "fav_del.php",
 		type: "POST",
 		data: {
 			img_id: id			
 		},
-	});
-	
+	});	
 	
 	} else {
 	x.src="icons/followed.png";	
@@ -110,6 +109,28 @@ function changeFollow(x) {
 		},
 	});
 }
+  }
+
+  function deletePattern(x) {
+
+	//x.src="icons/unfollowed.png";
+	console.log(x.id);
+	x.style.pointerEvents = "none";
+	x.classList.add("kappa");
+	x.style.backgroundColor = "red";
+
+	
+
+	/*
+	$.ajax({
+		url: "del.php",
+		type: "POST",
+		data: {
+			img_id: id			
+		},
+	});	
+*/ 
+
   }
 
 

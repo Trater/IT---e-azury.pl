@@ -3,8 +3,8 @@
 require_once "connect.php";
 $kategoria = $_SESSION['kategoria'];
 
-$new_img = -6;//ile dni wstecz maja byc pokazywane zdjecia w zakładce nowości, teraz 4 dni wstecz
-$img_popularity = 4; //ilosc polubien zeby zdjecie stalo sie popularne
+$new_img = -4;//ile dni wstecz maja byc pokazywane zdjecia w zakładce nowości, teraz 4 dni wstecz
+$img_popularity = 5; //ilosc polubien zeby zdjecie stalo sie popularne
 
 if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_subcategory = "%s"', $kategoria);

@@ -3,8 +3,11 @@
 <html>
 
 <?php
+
 echo<<<END
+<div class="logo">
 <img src="icons/logo.png">
+</div>
 <div class="tytul">
 	<h1 style="display: flex">e-ażury.pl</h1>
 	<span>Nadaje Twoim oknom doskonały wygląd.</span>

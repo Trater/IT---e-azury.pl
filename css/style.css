@@ -25,7 +25,7 @@ body {
     padding: 40px 0;
     background: url(kolor.png);
     background-size: 100vw;
-    color: rgb(76, 149, 168);
+    color: #4c95a8;
     
 }
 input, textarea {
@@ -34,32 +34,6 @@ input, textarea {
 
 .error {
   color: red;
-}
-.dodaj_wzor{
-  margin: 0;
-  padding: 0;
-  border-radius: 0.25em;
-  text-decoration: none;
-}
-.dodaj_wzor[type=submit]{
-  
-  padding: 16px 0;
-    cursor: pointer;
-    background: #2f889a;
-    color: #FFF;
-    font-weight: bold;
-    border: none;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    width: 100%;
-}
-
-.dodaj_wzor[type=submit]:hover, .dodaj_wzor[type=submit]:focus {
-  background: #3599ae;
-  outline: none;
 }
 
 h2 {
@@ -127,7 +101,7 @@ span {
     border-width: 1px;
     border-color: rgb(76, 149, 168);
     border: none;
-    box-shadow: 1px 1px 3px 1px rgb(73, 119, 128);
+    box-shadow: 1px 1px 3px 1px #497780;
 }
 
 .searchBar label {
@@ -254,7 +228,7 @@ header li {
 
 .address-icon {
     width: 20px;
-    background-color: rgb(76, 149, 168);
+    background-color: rgb(76, 150, 169);
     margin-right: 10px;
     padding: 8px;
     vertical-align: middle;
@@ -269,6 +243,8 @@ header li {
   display: none;
   right:20px;
   top: 20px;
+  background-color:rgba(207, 207, 207, 0.5);
+  border-radius: 20%;
 /*
   background-color: white;
   border-radius: 30%; 
@@ -276,7 +252,114 @@ header li {
  */
 }
 
+.delete-icon {
+  pointer-events: all;  
+  position: absolute;  
+  display: none;  
+  background-color:rgba(255, 93, 93, 0.5);
+  border-radius: 20%;
+}
+.upload{ 
+  vertical-align: middle;
+  border-radius: 25px;
+  box-shadow: 0 0 15px 1px lightgray;
+  width: 500px;
+  padding: 50px;
+  display: flex;
+  justify-content: center; 
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  
+}
+.upload-details{
+  padding-top:15px;
+  width:450px;
+ 
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  
 
+ }
+ .details{
+  margin-left: auto; 
+  margin-right: auto; 
+ }
+ .details select{
+  height: 22px; 
+  border-color:rgb(76, 149, 168); 
+  border-radius: 3px; 
+  color:rgb(76, 149, 168);
+  cursor: pointer;
+ }
+ .details select:focus{
+  outline: none !important;    
+    box-shadow: 0 0 10px lightgray;
+}
+.details input
+{
+  color: rgb(76, 149, 168); 
+  border-color:rgb(76, 149, 168); 
+  border-radius: 3px;
+  
+}
+.details input:focus{
+  outline: none !important;    
+    box-shadow: 0 0 10px lightgray;
+
+    
+   
+}
+
+ .upload-button{
+  position: fixed ;
+  z-index: 3; 
+  left: 100px;
+  top: 100px;
+  font-family: 'Quicksand-Bold';  
+
+  padding: auto;
+  list-style: none;
+
+ }
+ .upload-button li{
+  background-color:rgba(207, 207, 207, 0.5);
+  border-radius: 10px ;
+  padding:0px 10px 0px 5px;
+  margin-top: 10px;
+ }
+ .upload-button img{ 
+  width: 50px;  
+  height: 50px;
+  margin: auto;
+  
+
+ }
+ .upload-button a{
+  color: inherit;
+  /* blue colors for links too */
+  text-decoration: inherit;
+  display: flex;
+  justify-content: center;    
+
+ }
+
+ .add-button{
+  width: 300px;
+  height: 50px; 
+  cursor:pointer;
+  background-color: rgb(76, 150, 169);
+  border: none;
+  border-radius: 10px;
+  color: white;
+ }
+h5{
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+ 
+ 
 
 .occasions {
     width: 45px;
@@ -284,20 +367,25 @@ header li {
 
 }
 
-.types {
-  
+.types {  
     list-style: none;
     font-size: 20px;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;    
     padding-left: 0;
-
 }
 
-.types li {
-  
+.types-del {  
+  list-style: none;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;    
+  padding-left: 0;
+}
+
+.types li {  
     width: 33%;
     padding-top: 10px;
     transition: opacity 0.5s;
@@ -312,8 +400,24 @@ header li {
     color: rgb(149, 149, 149);
     display: flex;
     flex-direction: column;
-
-
+}
+.types-del li {  
+  width: 15%;
+  padding-top: 10px;
+  transition: opacity 0.5s;
+  transition: box-shadow 0.5s;
+  border-radius: 20px;
+  position:relative;  
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  color: rgb(149, 149, 149);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 15px 1px lightgray;
+  cursor:pointer; 
 }
 
 .types li h3 {
@@ -322,8 +426,19 @@ header li {
     padding-bottom: 5px;
 }
 
+.types-del li h3 {
+  margin-bottom: 0;
+  margin-top: auto;
+  padding-bottom: 5px;
+}
+
 .types li img {
     margin-top: auto;
+}
+
+.types-del li img {
+  margin-top: auto;
+  width: 150px;
 }
 
 .types li a {
@@ -334,15 +449,29 @@ header li {
     
 }
 
+
+
 .types li:hover {
     box-shadow: 0 0 15px 1px lightgray;
+}
+.types-del li:hover, .kappa{
+ 
+ background-image: url("../icons/cross.png");
+  background-size: auto 80px;
+  background-repeat:no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  
+
 }
 
 .types li:hover a .follow-icon{
  display:  inline; 
-
-
 }
+.types li:hover a .delete-icon{
+  display:  inline; 
+  
+ }
 
 .oc {
     display: flex;
@@ -817,9 +946,6 @@ li img {
     }
     .cd-signin-modal__input[type=submit] {
       padding: 16px 0;      
-    }
-    .dodaj_wzor[type=submit]{
-      padding: 16px 0;   
     }
   }
   
