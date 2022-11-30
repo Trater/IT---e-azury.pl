@@ -36,7 +36,9 @@ if(!isset($_SESSION['zalogowany']))
 <form action="upload.php" method="post" enctype="multipart/form-data">
   <div >
   <h5>Wybierz zdjęcie wzoru:</h5> 
-    <input type="file" name="file" style="width: 220px">
+    <input type="file" name="file" style="width: 220px" id="imgInp">  
+    <br></br>  
+    <img id="blah" src="#" alt="" style="width: 300px; visibility: hidden;"  >
 </div>
     <div class="upload-details">
 
@@ -65,7 +67,7 @@ if(!isset($_SESSION['zalogowany']))
       <h5>Nazwa wzoru</h5> 
       <input name="title" placeholder="Nazwa wzoru">
     </div>
-    <div style="padding-top: 20px;"  > 
+    <div style="padding-top: 50px;"  > 
     <input type="submit" name="submit" value="DODAJ" class="add-button" >
 </div>
 </div>
@@ -74,7 +76,7 @@ if(!isset($_SESSION['zalogowany']))
 </main>
 
 
-
+<script src="js/upload.js"></script>
 </body>
 
 </html>

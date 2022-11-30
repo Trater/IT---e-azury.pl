@@ -118,8 +118,7 @@ function changeFollow(x) {
 	x.style.pointerEvents = "none";
 	x.classList.add("kappa");
 	x.style.backgroundColor = "red";
-
-	
+	var id = x.id;	
 
 	/*
 	$.ajax({
@@ -129,11 +128,11 @@ function changeFollow(x) {
 			img_id: id			
 		},
 	});	
-*/ 
 
+*/
   }
 
-
+  
 /*
 $(window).scroll(function() {    
     var scroll = $(window).scrollTop();

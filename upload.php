@@ -34,7 +34,7 @@ else
       if(in_array($fileType, $allowTypes))
       {
           // Upload file to server
-          if($stmt=$polaczenie->prepare('select img_id from images where img_name =?'))
+          if($stmt=$polaczenie->prepare('select img_id from images where img_filename =?'))
           {
             $stmt->bind_param('s', $fileName);
             $stmt->execute();
