@@ -24,18 +24,31 @@ if(!isset($_SESSION['zalogowany']))
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
+        <header class="logo">
+            <?php
+                include_once "header.php";
+                
+            ?>
+        </header>
+    <main>
+        <?php
+            include_once "navBar.php";            
+        ?>
+        <div class="container">
         <header style="padding-bottom: 30px;  display: flex; justify-content: center;">
 <h1> USUŃ WZÓR</h1>
         </header>
         <main >
-                
-                    <?php                            
-                        require_once "delimages.php";
-                    ?> 
+        
+            <?php                            
+                require_once "delimages.php";
+            ?> 
                                  
             </main>
         </div>       
         <script src="js/app.js"></script>
-    </body>
+    </main>
+</div>
+</body>
 </html>

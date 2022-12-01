@@ -15,7 +15,7 @@ if(!isset($_SESSION['zalogowany']))
 }
 ?> 
 <head>
-    <title>Upload form</title>
+    <title>Edit form</title>
     
 	<link rel="stylesheet" href="css/style.css"> 
 	<link rel="stylesheet" href="css/demo.css"> 
@@ -26,30 +26,34 @@ if(!isset($_SESSION['zalogowany']))
 
 <body>
 <div class="container">
-        <header class="logo">
-            <?php
-                include_once "header.php";
-                
-            ?>
-        </header>
-        <main>
-            <?php
-                include_once "navBar.php";            
-            ?>
- <div class="container">
+  <header class="logo">
+  <?php
+      include_once "header.php";
+      
+  ?>
+  </header>
+  <main>
+      <?php
+          include_once "navBar.php";            
+      ?>
+       <div class="container">
         <header style="padding-bottom: 30px;  display: flex; justify-content: center;">
-<h2> DODAJ WZÓR</h2>
+<h2> EDYTUJ WZÓR</h2>
         </header>
         <main style="height: 1000px;">
 
 <div class="upload">
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
+<form action="edit.php" method="post" enctype="multipart/form-data">
   <div >
+  <select name="wzor" style="height: 22px; border-color:rgb(76, 149, 168); border-radius: 3px; color:rgb(76, 149, 168);">
+    <option value="" disabled selected hidden>Wybierz wzór</option>
+    <?php                            
+      require_once "editimages.php";
+    ?> 
+    </select>
   <h5>Wybierz zdjęcie wzoru:</h5> 
-    <input type="file" name="file" style="width: 220px" id="imgInp">  
-    <br></br>  
-    <img id="blah" src="#" alt="" style="width: 300px; visibility: hidden;"  >
+    <input type="file" name="file" style="width: 220px">
 </div>
     <div class="upload-details">
 
@@ -68,7 +72,8 @@ if(!isset($_SESSION['zalogowany']))
 <div class="details"> 
       <h5>Podkategoria</h5> 
     <select name="subcategory" style="height: 22px" placeholder="Sdas">   
-      <option value="" selected>Brak</option>       
+      <option value="" disabled selected hidden>Wybierz podkategorie</option>
+      <option value="brak">Brak</option>       
       <option value="b">Boże narodzenie</option>
       <option value="wi">Wielkanoc</option>
       <option value="j">Jesień</option>
@@ -78,19 +83,18 @@ if(!isset($_SESSION['zalogowany']))
       <h5>Nazwa wzoru</h5> 
       <input name="title" placeholder="Nazwa wzoru">
     </div>
-    <div style="padding-top: 50px;"  > 
-    <input type="submit" name="submit" value="DODAJ" class="add-button" >
+    <div style="padding-top: 20px;"  > 
+    <input type="submit" name="submit" value="ZAAKCEPTUJ" class="add-button" >
 </div>
 </div>
 </form>
 </div>
 </main>
 
-        </main>
+
+  </main>
 </div>
 
-
-<script src="js/upload.js"></script>
 </body>
 
 </html>
