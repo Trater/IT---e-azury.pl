@@ -36,7 +36,9 @@ else
     {
       while($row=$query->fetch_assoc())
       {
-        $img_URL ='uploaded_images/'.$row["img_filename"];        
+        $nazwa_pliku = $row["img_filename"];
+        $img_URL_not_encoded=sprintf('uploaded_images/%s',$nazwa_pliku);
+        $img_URL = str_replace(' ',"%20",$img_URL_not_encoded);
         $img_title = $row["img_title"];
         $img_id = $row["img_id"];
 
