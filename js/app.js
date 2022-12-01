@@ -120,7 +120,7 @@ function changeFollow(x) {
 	x.style.backgroundColor = "red";
 	var id = x.id;	
 
-	/*
+	
 	$.ajax({
 		url: "del.php",
 		type: "POST",
@@ -129,7 +129,7 @@ function changeFollow(x) {
 		},
 	});	
 
-*/
+
   }
 
   
