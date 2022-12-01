@@ -19,7 +19,7 @@ if($polaczenie->connect_errno!=0)
 }
 else 
 {
-  if(!empty($_FILES["file"]["name"]) || $_POST['category']!="" || $_POST['subcategory']!="" || $_POST['title']!= null)
+  if(!empty($_FILES["file"]["name"]) || isset($_POST['category']) || isset($_POST['subcategory']) || isset($_POST['title']))
   {
     $targetDir = "uploaded_images/";
     if($query=$polaczenie->query($zapytanie))
@@ -39,19 +39,19 @@ else
           $isImage=0;
          
 
-        if($_POST['category']=="")
+        if(!isset($_POST['category']))
           $img_category=$row["img_category"];
         else
           $img_category=$_POST['category'];
 
-        if($_POST['subcategory']=="")
+        if(!isset($_POST['subcategory']))
           $img_subcategory=$row["img_subcategory"];
         elseif($_POST['subcategory']=="brak")
           $img_subcategory=null;
         else
           $img_subcategory=$_POST['subcategory'];
 
-        if($_POST['title']== null)
+        if(!isset($_POST['title']))
           $img_title=$row["img_title"];
         else
           $img_title=$_POST['title'];
