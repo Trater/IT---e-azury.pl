@@ -13,7 +13,7 @@ elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategor
 elseif($kategoria == 'fav')
   $zapytanie = sprintf('select img_filename, img_title, img_id from images JOIN favourite ON img_id= images_img_id where users_user_id = "%s"', $_SESSION['user_id']);
 elseif($kategoria == 'new')
-  $zapytanie = sprintf('select img_filename, img_title, img_id, img_uploaded from images where img_uploaded BETWEEN DATE_ADD(CURDATE(), INTERVAL "%d" DAY) AND CURDATE() ORDER BY img_uploaded DESC', $new_img);
+  $zapytanie = sprintf('select img_filename, img_title, img_id, img_uploaded from images where img_uploaded BETWEEN DATE_ADD(CURDATE(), INTERVAL "%d" DAY) AND CURDATE()+1 ORDER BY img_uploaded DESC', $new_img);
 elseif($kategoria == 'pop')
   $zapytanie = sprintf('select img_filename, img_title, img_id, COUNT(img_id) as ilosc_polubien from images JOIN favourite ON img_id= images_img_id GROUP BY img_id ORDER BY ilosc_polubien DESC');
 
