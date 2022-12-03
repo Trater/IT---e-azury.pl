@@ -39,7 +39,7 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
 	<ul class="js-signin-modal-switcher js-signin-modal-trigger">
 		<li class="home"><a href="index.php"><img src="icons/home.svg" ></a></li>
 		<li class="searchBar">
-			<input type="text" placeholder="SZUKAJ WZORU">
+			<input name="wyszukiwanie" type="text" placeholder="SZUKAJ WZORU">
 		</li>
 		<li><a href="ulubione.php">ULUBIONE</a></li>
 		<li><a href="nowosci.php">NOWOŚCI</a></li>
@@ -57,7 +57,9 @@ END;
 	<ul class="js-signin-modal-switcher js-signin-modal-trigger">
 		<li class="home"><a href="index.php"><img src="icons/home.svg" ></a></li>
 		<li class="searchBar">
-			<input type="text" placeholder="SZUKAJ WZORU">
+			<form action="wyszukiwanie.php" method="post" enctype="multipart/form-data">
+				<input id="wyszukiwanie" name="wyszukiwanie" type="text" placeholder="SZUKAJ WZORU">
+			</form>
 		</li>		
 		<li><a href="nowosci.php">NOWOŚCI</a></li>
 		<li><a href="popularne.php">POPULARNE</a></li>
