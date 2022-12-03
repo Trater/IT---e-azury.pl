@@ -49,7 +49,7 @@ else
           {
             echo <<<END
             <li>
-            <img src=$img_URL alt=""><h3>$img_title</h3>                      
+            <img src=$img_URL alt=""><h3>$img_title</h3>
             END;
             if(isset($_SESSION['zalogowany']))
             {
@@ -73,7 +73,8 @@ else
         {
           echo <<<END
           <li>
-          <img src=$img_URL alt=""><h3>$img_title</h3>                      
+          <img src=$img_URL alt=""><h3>$img_title </h3>     
+                         
           END;
           if(isset($_SESSION['zalogowany'])){
             $user = $_SESSION['user_id'];
