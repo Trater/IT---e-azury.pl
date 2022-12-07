@@ -57,7 +57,7 @@ END;
 	<ul class="js-signin-modal-switcher js-signin-modal-trigger">
 		<li class="home"><a href="index.php"><img src="icons/home.svg" ></a></li>
 		<li class="searchBar">
-			<form action="wyszukiwanie.php" method="post" enctype="multipart/form-data">
+			<form name="form_wyszukiwanie" action="wyszukiwanie.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" required>
 				<input id="wyszukiwanie" name="wyszukiwanie" type="text" placeholder="SZUKAJ WZORU">
 			</form>
 		</li>		

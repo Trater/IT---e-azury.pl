@@ -7,6 +7,8 @@ $new_img = -7;//ile dni wstecz maja byc pokazywane zdjecia w zakładce nowości,
 $img_popularity = 3; //ilosc polubien zeby zdjecie stalo sie popularne
 if(isset($_POST['wyszukiwanie']))
   $wyszukanie = $_POST['wyszukiwanie'];
+
+
 if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_subcategory = "%s"', $kategoria);
 elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategoria === 'r' | $kategoria === 'w' | $kategoria === 'z')
@@ -18,7 +20,7 @@ elseif($kategoria == 'new')
 elseif($kategoria == 'pop')
   $zapytanie = sprintf('select img_filename, img_title, img_id, COUNT(img_id) as ilosc_polubien from images JOIN favourite ON img_id= images_img_id GROUP BY img_id ORDER BY ilosc_polubien DESC');
 elseif($kategoria == 'wyszukiwanie' || $kategoria == 'liczba_znalezionych_wzorow')
-  $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_title like "%%%s%%"',$wyszukanie);
+  $zapytanie = sprintf('select img_filename, img_title, img_id, img_category from images where img_title like "%%%s%%" order by img_category',$wyszukanie);
 $polaczenie = @new mysqli($host, $db_user,$db_password,$db_name);
 // Include the database configuration file
 if($polaczenie->connect_errno!=0)
@@ -34,6 +36,7 @@ else
 {
   if($query=$polaczenie->query($zapytanie))
   {
+
     if($kategoria=='liczba_znalezionych_wzorow')
     {
       echo <<<END

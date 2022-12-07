@@ -146,11 +146,12 @@ $(window).scroll(function() {
 }); 
 */
 
-document.getElementById('wyszukiwanie')
-    .addEventListener('keyup', function(event) {
-        if (event.code === 'Enter')
-        {
-            event.preventDefault();
-            document.querySelector('form').submit();
-        }
-    });
+
+
+function validateForm() {
+	var x = document.forms["form_wyszukiwanie"]["wyszukiwanie"].value;
+	if (x == "") {
+	  alert("Nic nie wprowadziłeś!");
+	  return false;
+	}
+  }
