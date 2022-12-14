@@ -434,6 +434,7 @@ h5{
 
 .types li img {
     margin-top: auto;
+    max-height: 300px;
 }
 
 .types-del li img {
@@ -490,8 +491,9 @@ h5{
 }
 
 li img {
-    width: 300px;
+    max-width: 300px;
     pointer-events: none;
+    
 }
 
 .pionowe {
