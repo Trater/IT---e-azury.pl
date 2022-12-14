@@ -110,6 +110,68 @@ function changeFollow(x) {
 	});
 }
   }
+  function changeLike(x) {
+	var id = x.id;
+	var like ;
+	var sql; 
+	var sqlID;
+	if ( id < 3000 ){
+		
+	var targetDiv = document.getElementById(id);
+	
+	var targetDiv2 = document.getElementById(parseInt(id)+2000);
+			like = 1;
+			sqlID = parseInt(id) - 1000;
+	} else {
+		
+	var targetDiv = document.getElementById(id-2000);
+	var targetDiv2 = document.getElementById(id);
+	like = 0;
+	sqlID = parseInt(id)-3000;
+	}
+	
+
+	if(like == 1 && x.src.includes('/like.png')){ //like
+		targetDiv.src="icons/like2.png";	
+		targetDiv2.src="icons/unlike.png";
+		sql = 1;
+	}	
+	else if ( like == 1 && x.src.includes('/like2.png')) //unlike
+	{
+		targetDiv.src="icons/like.png";	
+		targetDiv2.src="icons/unlike.png";
+		sql = 0;
+	} 
+	else if ( like == 0  && x.src.includes('/unlike.png'))//dislike
+	{
+		targetDiv.src="icons/like.png";	
+		targetDiv2.src="icons/unlike2.png";
+		sql = -1;
+	} 
+	else if ( like == 0 && x.src.includes('/unlike2.png'))//undislike 
+	{
+		targetDiv.src="icons/like.png";	
+		targetDiv2.src="icons/unlike.png";
+		sql = 0;
+	} 
+	$.ajax({
+		url: "like.php",
+		type: "POST",
+		data: {
+			img_id: sqlID,
+			rating_id: sql 
+
+		},
+	});	
+	console.log(sqlID);
+	console.log(sql);
+	
+  }
+
+
+
+
+
 
   function deletePattern(x) {
 
