@@ -8,8 +8,24 @@ $img_popularity = 3; //ilosc polubien zeby zdjecie stalo sie popularne
 if(isset($_POST['wyszukiwanie']))
   $wyszukanie = $_POST['wyszukiwanie'];
 
-
-if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
+if(isset($_SESSION['zalogowany']))
+{
+  if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
+  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_subcategory = "%s"', $kategoria);
+elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategoria === 'r' | $kategoria === 'w' | $kategoria === 'z')
+  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_category = "%s"', $kategoria);
+elseif($kategoria == 'fav')
+  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images JOIN favourite f ON img_id= f.images_img_id LEFT JOIN rating r ON img_id= r.images_img_id where f.users_user_id = "%s"', $_SESSION['user_id']);
+elseif($kategoria == 'new')
+  $zapytanie = sprintf('select img_filename, img_title, img_id, img_uploaded, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_uploaded BETWEEN DATE_ADD(CURDATE(), INTERVAL "%d" DAY) AND CURDATE()+1 ORDER BY img_uploaded DESC', $new_img);
+elseif($kategoria == 'pop')
+  $zapytanie = sprintf('select img_filename, img_title, img_id, COUNT(img_id) as ilosc_polubien, rating_number from images JOIN favourite f ON img_id= f.images_img_id LEFT JOIN rating r ON img_id= r.images_img_id GROUP BY img_id ORDER BY ilosc_polubien DESC');
+elseif($kategoria == 'wyszukiwanie' || $kategoria == 'liczba_znalezionych_wzorow')
+  $zapytanie = sprintf('select img_filename, img_title, img_id, img_category, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_title like "%%%s%%" order by img_category',$wyszukanie);
+}
+else
+{
+  if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_subcategory = "%s"', $kategoria);
 elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategoria === 'r' | $kategoria === 'w' | $kategoria === 'z')
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_category = "%s"', $kategoria);
@@ -21,6 +37,8 @@ elseif($kategoria == 'pop')
   $zapytanie = sprintf('select img_filename, img_title, img_id, COUNT(img_id) as ilosc_polubien from images JOIN favourite ON img_id= images_img_id GROUP BY img_id ORDER BY ilosc_polubien DESC');
 elseif($kategoria == 'wyszukiwanie' || $kategoria == 'liczba_znalezionych_wzorow')
   $zapytanie = sprintf('select img_filename, img_title, img_id, img_category from images where img_title like "%%%s%%" order by img_category',$wyszukanie);
+}
+
 $polaczenie = @new mysqli($host, $db_user,$db_password,$db_name);
 // Include the database configuration file
 if($polaczenie->connect_errno!=0)
@@ -67,21 +85,38 @@ else
               $user = $_SESSION['user_id'];
               $zapytanie2 = sprintf('select * from favourite where images_img_id = "%s" AND users_user_id = "%s"', $img_id , $user);
               $query2=$polaczenie->query($zapytanie2);   
-              $ff = $query2->num_rows;          
-              if ($ff)        {
-                $src = "icons/followed.png";
-                $src2 = "icons/like.png";
-                $src3 = "icons/unlike.png";
-            }
-              else {
-                $src = "icons/unfollowed.png";
+              $ff = $query2->num_rows;
+              
+              if($row['rating_number']==0 || $row['rating_number']==NULL)
+              {
                 $src2 = "icons/like.png";
                 $src3 = "icons/unlike.png";
               }
+              else if($row['rating_number']==1)
+              {
+                $src2 = "icons/like2.png";
+                $src3 = "icons/unlike.png";
+              }
+              else if($row['rating_number']==-1)
+              {
+                $src2 = "icons/like.png";
+                $src3 = "icons/unlike2.png";
+              }
+              if ($ff)        
+              {
+                $src = "icons/followed.png";
+                
+              }
+              else 
+              {
+                $src = "icons/unfollowed.png";
+              }
+              $img_id2 = $img_id +1000;
+              $img_id3 = $img_id +3000;
             echo <<<END
             <a href="#" onclick="return false;"><img class="follow-icon" id=$img_id onclick="changeFollow(this)" src=$src></a> 
-            <a href="#" onclick="return false;"><img class="like-icon" id=$img_id onclick="changeLike(this)" src=$src2></a>
-            <a href="#" onclick="return false;"><img class="unlike-icon" id=$img_id onclick="changeUnLike(this)" src=$src3></a>
+            <a href="#" onclick="return false;"><img class="like-icon" id=$img_id2 onclick="changeLike(this)" src=$src2></a>
+            <a href="#" onclick="return false;"><img class="unlike-icon" id=$img_id3 onclick="changeLike(this)" src=$src3></a>
             </li>
             END;
             } else 
@@ -100,16 +135,31 @@ else
             $zapytanie2 = sprintf('select * from favourite where images_img_id = "%s" AND users_user_id = "%s"', $img_id , $user);
             $query2=$polaczenie->query($zapytanie2);   
             $ff = $query2->num_rows;      
-            $src2 = "icons/like.png";
-            $src3 = "icons/unlike.png";    
+            if($row['rating_number']==0 || $row['rating_number']==NULL)
+            {
+              $src2 = "icons/like.png";
+              $src3 = "icons/unlike.png";
+            }
+            else if($row['rating_number']==1)
+            {
+              $src2 = "icons/like2.png";
+              $src3 = "icons/unlike.png";
+            }
+            else if($row['rating_number']==-1)
+            {
+              $src2 = "icons/like.png";
+              $src3 = "icons/unlike2.png";
+            } 
             if ( $ff)        
             $src = "icons/followed.png";
           else 
             $src = "icons/unfollowed.png";
+            $img_id2 = $img_id +1000;
+            $img_id3 = $img_id +3000;   
           echo <<<END
           <a href="#" onclick="return false;"><img class="follow-icon" id=$img_id onclick="changeFollow(this)" src=$src></a> 
-          <a href="#" onclick="return false;"><img class="like-icon" id=$img_id onclick="changeLike(this)" src=$src2></a>
-          <a href="#" onclick="return false;"><img class="unlike-icon" id=$img_id onclick="changeUnLike(this)" src=$src3></a>
+          <a href="#" onclick="return false;"><img class="like-icon" id=$img_id2 onclick="changeLike(this)" src=$src2></a>
+          <a href="#" onclick="return false;"><img class="unlike-icon" id=$img_id3 onclick="changeLike(this)" src=$src3></a>
           </li>
           END;
           } else 
@@ -127,16 +177,27 @@ else
             $user = $_SESSION['user_id'];
             $zapytanie2 = sprintf('select * from favourite where images_img_id = "%s" AND users_user_id = "%s"', $img_id , $user);
             $query2=$polaczenie->query($zapytanie2);   
-            $ff = $query2->num_rows;          
+            $ff = $query2->num_rows;   
+            if($row['rating_number']==0 || $row['rating_number']==NULL)
+              {
+                $src2 = "icons/like.png";
+                $src3 = "icons/unlike.png";
+              }
+              else if($row['rating_number']==1)
+              {
+                $src2 = "icons/like2.png";
+                $src3 = "icons/unlike.png";
+              }
+              else if($row['rating_number']==-1)
+              {
+                $src2 = "icons/like.png";
+                $src3 = "icons/unlike2.png";
+              }       
             if ($ff)        {
               $src = "icons/followed.png";
-              $src2 = "icons/like.png";
-              $src3 = "icons/unlike.png";
           }
             else {
               $src = "icons/unfollowed.png";
-              $src2 = "icons/like.png";
-              $src3 = "icons/unlike.png";
             }
 
             $img_id2 = $img_id +1000;
