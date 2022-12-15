@@ -10,18 +10,19 @@ if(isset($_POST['wyszukiwanie']))
 
 if(isset($_SESSION['zalogowany']))
 {
+  $user1=$_SESSION['user_id'];
   if($kategoria === 'b' | $kategoria === 'wi' | $kategoria === 'j' )
-  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_subcategory = "%s"', $kategoria);
+  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number, users_user_id from images LEFT JOIN rating ON (img_id= images_img_id and users_user_id="%s") where img_subcategory = "%s"',$user1, $kategoria);
 elseif($kategoria === 'n' | $kategoria === 'po' | $kategoria === 'pi' | $kategoria === 'r' | $kategoria === 'w' | $kategoria === 'z')
-  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_category = "%s"', $kategoria);
+  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images LEFT JOIN rating ON (img_id= images_img_id and users_user_id="%s") where img_category = "%s"',$user1, $kategoria);
 elseif($kategoria == 'fav')
-  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images JOIN favourite f ON img_id= f.images_img_id LEFT JOIN rating r ON img_id= r.images_img_id where f.users_user_id = "%s"', $_SESSION['user_id']);
+  $zapytanie = sprintf('select img_filename, img_title, img_id, rating_number from images JOIN favourite f ON img_id= f.images_img_id LEFT JOIN rating r ON (img_id= r.images_img_id and r.users_user_id="%s") where f.users_user_id = "%s"', $user1,$user1);
 elseif($kategoria == 'new')
-  $zapytanie = sprintf('select img_filename, img_title, img_id, img_uploaded, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_uploaded BETWEEN DATE_ADD(CURDATE(), INTERVAL "%d" DAY) AND CURDATE()+1 ORDER BY img_uploaded DESC', $new_img);
+  $zapytanie = sprintf('select img_filename, img_title, img_id, img_uploaded, rating_number from images LEFT JOIN rating ON (img_id= images_img_id and users_user_id="%s") where img_uploaded BETWEEN DATE_ADD(CURDATE(), INTERVAL "%d" DAY) AND CURDATE()+1 ORDER BY img_uploaded DESC', $user1 ,$new_img);
 elseif($kategoria == 'pop')
-  $zapytanie = sprintf('select img_filename, img_title, img_id, COUNT(img_id) as ilosc_polubien, rating_number from images JOIN favourite f ON img_id= f.images_img_id LEFT JOIN rating r ON img_id= r.images_img_id GROUP BY img_id ORDER BY ilosc_polubien DESC');
+  $zapytanie = sprintf('select img_filename, img_title, img_id, COUNT(img_id) as ilosc_polubien, rating_number from images JOIN favourite f ON img_id= f.images_img_id LEFT JOIN rating r ON (img_id= r.images_img_id and r.users_user_id="%s") GROUP BY img_id ORDER BY ilosc_polubien DESC', $user1);
 elseif($kategoria == 'wyszukiwanie' || $kategoria == 'liczba_znalezionych_wzorow')
-  $zapytanie = sprintf('select img_filename, img_title, img_id, img_category, rating_number from images LEFT JOIN rating ON img_id= images_img_id where img_title like "%%%s%%" order by img_category',$wyszukanie);
+  $zapytanie = sprintf('select img_filename, img_title, img_id, img_category, rating_number from images LEFT JOIN rating ON (img_id= images_img_id and users_user_id="%s") where img_title like "%%%s%%" order by img_category',$user1, $wyszukanie);
 }
 else
 {
