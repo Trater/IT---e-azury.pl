@@ -99,13 +99,17 @@ else
             $user = $_SESSION['user_id'];
             $zapytanie2 = sprintf('select * from favourite where images_img_id = "%s" AND users_user_id = "%s"', $img_id , $user);
             $query2=$polaczenie->query($zapytanie2);   
-            $ff = $query2->num_rows;          
+            $ff = $query2->num_rows;      
+            $src2 = "icons/like.png";
+            $src3 = "icons/unlike.png";    
             if ( $ff)        
             $src = "icons/followed.png";
           else 
             $src = "icons/unfollowed.png";
           echo <<<END
           <a href="#" onclick="return false;"><img class="follow-icon" id=$img_id onclick="changeFollow(this)" src=$src></a> 
+          <a href="#" onclick="return false;"><img class="like-icon" id=$img_id onclick="changeLike(this)" src=$src2></a>
+          <a href="#" onclick="return false;"><img class="unlike-icon" id=$img_id onclick="changeUnLike(this)" src=$src3></a>
           </li>
           END;
           } else 
