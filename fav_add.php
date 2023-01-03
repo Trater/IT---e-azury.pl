@@ -12,8 +12,6 @@
 	$sql = "INSERT INTO `favourite`(`favourite_id`, `users_user_id`, `images_img_id`) 
 	VALUES (NULL,'$user','$id')";
 
-
-$query=$polaczenie->query($zapytanie)
 	if (mysqli_query($conn, $sql)) {
 		echo json_encode(array("statusCode"=>200));
 	} 

@@ -100,7 +100,7 @@ function changeFollow(x) {
 	
 	} else {
 	x.src="icons/followed.png";	
-	
+	console.log("LOG1");
 	$.ajax({
 		url: "fav_add.php",
 		type: "POST",

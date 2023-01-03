@@ -41,6 +41,7 @@ if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany'] == true)) {
 		<li class="searchBar">
 		<form name="form_wyszukiwanie" action="wyszukiwanie.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()" required>
 			<input id="wyszukiwanie" name="wyszukiwanie" type="text" placeholder="SZUKAJ WZORU">
+		</form>
 		</li>
 		<li><a href="ulubione.php">ULUBIONE</a></li>
 		<li><a href="nowosci.php">NOWOŚCI</a></li>
