@@ -4,7 +4,7 @@
 
 <head>
     <title>DECORUM</title>
-    
+   
 	<link rel="stylesheet" href="css/style.css"> 
 	<link rel="stylesheet" href="css/demo.css"> 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -39,7 +39,7 @@
         <?php
             require_once "logowanie.php";
     ?>
-        <script src="js/app.js"></script>
+        
         <script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
         <script src="js/main.js"></script> <!-- Resource JavaScript -->
     

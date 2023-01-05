@@ -110,50 +110,83 @@ function changeFollow(x) {
 	});
 }
   }
+
+  
   function changeLike(x) {
 	var id = x.id;
-	var like ;
+	var li ;
 	var sql; 
 	var sqlID;
+
+	var likes, dislikes;
+	
+	number = parseInt(x.getAttribute('number'));;
+
 	if ( id < 3000 ){
 		
 	var targetDiv = document.getElementById(id);
 	
 	var targetDiv2 = document.getElementById(parseInt(id)+2000);
-			like = 1;
+			li = 1;
 			sqlID = parseInt(id) - 1000;
 	} else {
 		
 	var targetDiv = document.getElementById(id-2000);
 	var targetDiv2 = document.getElementById(id);
-	like = 0;
+	li = 0;	
 	sqlID = parseInt(id)-3000;
 	}
-	
 
-	if(like == 1 && x.src.includes('/like.png')){ //like
+	likes = parseInt(targetDiv.getAttribute('like'));
+	dislikes = parseInt(targetDiv2.getAttribute('dislike'));
+	
+	if(li == 1 && x.src.includes('/like.png')){ //like
+		if(targetDiv2.src.includes('/unlike2.png'))
+		dislikes--;
+		
 		targetDiv.src="icons/like2.png";	
 		targetDiv2.src="icons/unlike.png";
-		sql = 1;
+		sql = 1;		
+		
+		likes++;
+	
 	}	
-	else if ( like == 1 && x.src.includes('/like2.png')) //unlike
+	else if ( li == 1 && x.src.includes('/like2.png')) //unlike
+	{
+		targetDiv.src="icons/like.png";	
+		targetDiv2.src="icons/unlike.png";		
+		sql = 0;		
+		likes--;
+	} 
+	else if ( li == 0  && x.src.includes('/unlike.png'))//dislike
+	{
+		if(targetDiv.src.includes('/like2.png'))
+		likes--;
+				
+		targetDiv.src="icons/like.png";	
+		targetDiv2.src="icons/unlike2.png";		
+		sql = -1;		
+		dislikes++;
+	} 
+	else if ( li == 0 && x.src.includes('/unlike2.png'))//undislike 
 	{
 		targetDiv.src="icons/like.png";	
 		targetDiv2.src="icons/unlike.png";
-		sql = 0;
+		sql = 0;		
+		dislikes--;
 	} 
-	else if ( like == 0  && x.src.includes('/unlike.png'))//dislike
-	{
-		targetDiv.src="icons/like.png";	
-		targetDiv2.src="icons/unlike2.png";
-		sql = -1;
-	} 
-	else if ( like == 0 && x.src.includes('/unlike2.png'))//undislike 
-	{
-		targetDiv.src="icons/like.png";	
-		targetDiv2.src="icons/unlike.png";
-		sql = 0;
-	} 
+
+	targetDiv2.setAttribute('dislike',dislikes);
+	targetDiv.setAttribute('like',likes  );
+
+
+
+	console.log("Like:");
+		console.log(likes);
+		console.log("Dislike:");
+		console.log(dislikes);
+		console.log("");
+
 	$.ajax({
 		url: "like.php",
 		type: "POST",
@@ -162,10 +195,8 @@ function changeFollow(x) {
 			rating_id: sql 
 
 		},
-	});	
-	console.log(sqlID);
-	console.log(sql);
-	
+	});		
+	calculateBar(number,likes , dislikes);
   }
 
 
@@ -217,3 +248,33 @@ function validateForm() {
 	  return false;
 	}
   }
+
+
+  function calculateBar(number,likes,dislikes){
+
+	
+	var total= likes+dislikes;
+    //Simple math to calculate percentages
+	if(total == 0 ){
+	var percentageLikes=50;
+	var percentageDislikes=50;
+	} else {	
+	var percentageLikes=(likes/total)*100;
+	var percentageDislikes=(dislikes/total)*100;
+	}
+    //We need to apply the widths to our elements
+	//var first  = document.getElementById(id).getElementById('bar').getElementById('likesBar');
+	//var second = document.getElementById('bar');
+//	first.style.width=percentageLikes.toString()+"%";
+	//document.querySelector('id.dislikesBar').style.width=percentageDislikes.toString()+"%";
+	var first = document.getElementsByClassName('likesBar');
+	var second = document.getElementsByClassName('dislikesBar');
+	first[number].style.width=percentageLikes.toString()+"%";
+	second[number].style.width=percentageDislikes.toString()+"%";
+}
+
+
+
+
+
+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html>
-
+<script src="js/app.js"></script>
 <?php
 
 echo<<<END

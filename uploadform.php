@@ -49,7 +49,7 @@ if(!isset($_SESSION['zalogowany']))
   <h5>Wybierz zdjęcie wzoru:</h5> 
     <input type="file" name="file" style="width: 220px" id="imgInp">  
     <br></br>  
-    <img id="blah" src="#" alt="" style="width: 300px; visibility: hidden;"  >
+    <img id="blah" src="#" alt="" style="max-width: 300px; max-height: 300px; visibility: hidden;"  >
 </div>
     <div class="upload-details">
 

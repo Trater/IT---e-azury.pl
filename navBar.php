@@ -21,7 +21,7 @@ echo<<< END
             <a href="uploadform.php"><img src="icons/plus.png"/><h4> DODAJ WZÓR</h4></a>
         </li>
 		<li>
-            <a href="deleteform.php"><img src="icons/minus.png"/><h4>USUŃ WZÓR </h4></a>
+            <a href="deleteform.php"><img src="icons/minus.png"/><h4 >USUŃ WZÓR </h4></a>
 		</li>
 		<li>
             <a href="editform.php"><img src="icons/edit.png"/><h4>EDYTUJ WZÓR</h4></a>
