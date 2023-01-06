@@ -16,12 +16,6 @@ else
     $email = htmlentities($email, ENT_QUOTES);
     $password = htmlentities($password, ENT_QUOTES);
 
-
-
-//if($result = @$polaczenie->query(
-  //  sprintf("SELECT * FROM users WHERE user_email = '%s' AND user_password = '%s'",
-    //mysqli_real_escape_string($polaczenie,$email),
-    //mysqli_real_escape_string($polaczenie,$password))))
     if($result = @$polaczenie->query(sprintf("SELECT * FROM users WHERE user_email = '%s'",
     mysqli_real_escape_string($polaczenie,$email))))
     {

@@ -42,8 +42,8 @@
             require_once "logowanie.php";
     ?>
         <script src="js/app.js"></script>
-        <script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
-        <script src="js/main.js"></script> <!-- Resource JavaScript -->
+        <script src="js/placeholders.min.js"></script>
+        <script src="js/main.js"></script>
     
         
     </body>

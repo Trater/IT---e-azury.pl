@@ -43,7 +43,6 @@ elseif($kategoria == 'wyszukiwanie' || $kategoria == 'liczba_znalezionych_wzorow
 }
 
 $polaczenie = @new mysqli($host, $db_user,$db_password,$db_name);
-// Include the database configuration file
 if($polaczenie->connect_errno!=0)
 {
     echo "Error: ".$polaczenie->connect_errno;
@@ -116,7 +115,6 @@ else
               if ($ff)        
               {
                 $src = "icons/followed.png";
-                
               }
               else 
               {

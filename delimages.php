@@ -20,19 +20,20 @@ else
 {
 
 
-for ($i = 0; $i <= 5; $i++) {
+for ($i = 0; $i <= 5; $i++) 
+{
 
 
- echo  '<div class="linie">';            
-                    
-echo "<h2>".$NAZWA[$i]."</h2>";
-echo<<<END
-                    <img src="liniab.png" width="750px" height="7px">
-                </div>
-<section>               
-<ul class="types-del">
+  echo  '<div class="linie">';            
+                      
+  echo "<h2>".$NAZWA[$i]."</h2>";
+  echo<<<END
+                      <img src="liniab.png" width="750px" height="7px">
+                  </div>
+  <section>               
+  <ul class="types-del">
 
-END;
+  END;
 
   $zapytanie = sprintf('select img_filename, img_title, img_id from images where img_category = "%s"', $kategoria[$i]);
 
@@ -40,29 +41,25 @@ END;
   if($query=$polaczenie->query($zapytanie))
   {
     if ($query->num_rows > 0) 
-    {
-      while($row=$query->fetch_assoc())
       {
-        $nazwa_pliku = $row["img_filename"];
-        $img_URL_not_encoded=sprintf('uploaded_images/%s',$nazwa_pliku);
-        $img_URL = str_replace(' ',"%20",$img_URL_not_encoded);      
-        $img_title = $row["img_title"];
-        $img_id = $row["img_id"];   
+        while($row=$query->fetch_assoc())
+        {
+          $nazwa_pliku = $row["img_filename"];
+          $img_URL_not_encoded=sprintf('uploaded_images/%s',$nazwa_pliku);
+          $img_URL = str_replace(' ',"%20",$img_URL_not_encoded);      
+          $img_title = $row["img_title"];
+          $img_id = $row["img_id"];   
 
-          echo <<<END
-          <li onclick="deletePattern(this);" id=$img_id>
-          <img src=$img_URL alt="KAPPA">
-         
-          </li>
-          END;
+            echo <<<END
+            <li onclick="deletePattern(this);" id=$img_id>
+            <img src=$img_URL alt="KAPPA">
           
-         
-               
+            </li>
+            END; 
+        }
+        echo "</ul>";
+        echo "</section>"; 
       }
-
-      echo "</ul>";
-      echo "</section>"; 
     }
-  }
   }
 }
